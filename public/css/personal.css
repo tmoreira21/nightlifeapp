@@ -1,0 +1,12 @@
+body {
+    background: url('https://nightlifeapp-tmoreira21.c9users.io/public/img/lights-night-dark-abstract.jpg') no-repeat center center fixed; 
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    color: #FFFFFF;
+}
+
+.centered-text {
+    font-weight: bold;
+}

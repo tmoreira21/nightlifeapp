@@ -1,0 +1,30 @@
+	<div class="container">
+	  <h2>Nightlife Coordinator</h2>
+	  <b>Be safe, Be well</b><br /><br />
+	  <form name="srch" id="srch" method="post" action="/" />
+	    <div class="input-group">
+        <input type="text" name="term" id="term" class="form-control" placeholder="Where are you..." value="{{#if term }}{{ term }}{{/if}}">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-info" value="Search" />
+        </span>
+      </div><!-- /input-group -->
+      (Using Yelp Fusion API)
+      <br /><br />
+      <table class="table table-condensed" style="background:rgba(0,0,0,0.5);">
+        {{# each bars}}
+	      <tr>
+	      	<td style="width:100px;"><img src="{{this.image_url}}" style="width:100px;height:100px;" alt="{{this.name}} logo"></td>
+        	<td><strong>{{this.name}}</strong>&nbsp;&nbsp;
+        	{{#if ../logIn}}
+        	  <button type="button" class="btn btn-primary" onClick="updateGoing('{{this.id}}');return false;"><div id="{{this.id}}" style="display: inline-block;">{{this.going}}</div> GOING</button></td>
+        	{{else}}
+        	  <a href="/auth/facebook"class="btn btn-primary">{{this.going}} GOING</a></td>
+        	{{/if}}
+        </tr>
+        {{/each}}
+        </table>
+	  </form>
+	</div>
+{{#if logIn}}
+  <script type="text/javascript" src="/public/js/script.js"></script>
+{{/if}}
