@@ -1,8 +1,6 @@
 'use strict';
 
 var Places = require('../models/places.js');
-var Users = require('../models/users.js');
-
 
 function clickHandler () {
     
@@ -61,7 +59,6 @@ function clickHandler () {
                 });
                 
             }).catch(e => {
-              //console.log("ERROR");
               console.log(e);
               res.render('index',{term:pesq,bars:response,logIn:ssn.logIn});
             });
@@ -75,11 +72,7 @@ function clickHandler () {
         var user = ssn.passport.user;
         var plc = req.query.q;
         var today = todaysDate();
-        //return 0 ou 1
-        //SEARCH PLACE E COM ID_USER
-        //SE ENCONTRAR, REMOVER USER, DIMINUIR GOING E RETORNA 0
-        //SE NÃO ENCONTRAR, INSERIR USER, AUMENTAR GOING E RETORNA 1
-        
+
         Places.findOne({ 'descript.idPlace': String(plc), 'descript.day': today, 'user._id': String(user) }, function (err, place) {
             if (err) {
                 console.log(err);

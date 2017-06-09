@@ -14,12 +14,7 @@ module.exports = function (app, passport, ssn) {
 
     app.route('/going')
         .get(isLoggedIn,clickHandler.going);
-/*    app.route('/api/addOptions')
-        .post(isLoggedIn,clickHandler.addOptions);
-        
-    app.route('/api/poolDelete/:id')
-        .get(isLoggedIn,clickHandler.poolDelete);
-    */
+
     //--------------------LOGIN LOGOUT-------------------
     
     app.route('/logout')
@@ -34,11 +29,10 @@ module.exports = function (app, passport, ssn) {
     app.route('/auth/facebook')
         .get(passport.authenticate('facebook', { scope : 'email' }));
 
-    // handle the callback after twitter has authenticated the user
+    // handle the callback after facebook has authenticated the user
     app.route('/auth/facebook/callback')
         .get(
         passport.authenticate('facebook', {
-            //successRedirect : '/',
             failureRedirect : '/failure'
     }),
         function(req, res) 
